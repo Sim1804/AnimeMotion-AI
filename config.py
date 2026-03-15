@@ -8,11 +8,13 @@ class CameraConfig:
     height: int = 720
     fps: int = 30
     flip_horizontal: bool = True
+    autofocus: bool = False
+    auto_exposure: bool = True
 
 @dataclass
 class MediaPipeConfig:
-    min_detection_confidence: float = 0.65
-    min_tracking_confidence: float = 0.55
+    min_detection_confidence: float = 0.3
+    min_tracking_confidence: float = 0.3
     model_complexity: int = 1
     smooth_landmarks: bool = True
 

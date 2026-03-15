@@ -22,7 +22,7 @@ class PoseLM:
 class HandData:
     landmarks: np.ndarray
     landmarks_px: np.ndarray
-    handeness: str
+    handedness: str
     score: float
 
 @dataclass
