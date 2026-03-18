@@ -293,15 +293,15 @@ class MediaPipeLayer:
         self._pose_enabled = True
         self._smoother.reset("pose")
         print("[MediaPipePlayer] Pose activée")
-
-    def diseable_pose(self) -> None:
+    
+    def disable_pose(self) -> None:
         self._pose_enabled = False
         self._smoother.reset("pose")
-        print("[MediaPipePlayer] Pose désactivée")
+        print("[MediaPipeLayer] Pose désactivée")
     
-    def toggle_pose(self) -> None:
+    def toggle_pose(self) -> bool:
         if self._pose_enabled:
-            self.diseable_pose()
+            self.disable_pose()
         else:
             self.enable_pose()
         return self._pose_enabled

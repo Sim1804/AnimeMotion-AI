@@ -6,6 +6,7 @@ __pycache__/
 # C extensions
 *.so
 
+test*.py
 test_c*.py
 models/*.task
 models/*.tflite

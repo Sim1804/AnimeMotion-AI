@@ -1,4 +1,3 @@
-
 import numpy as np
 from dataclasses import dataclass
 from typing import Optional
@@ -31,8 +30,8 @@ class HandPrimitivesExtractor:
         dt: float,
     ) -> HandPrimitives:
 
-        lm   = hand.landmarks      # (21, 3)
-        lm_p = hand.landmarks_px   # (21, 2)
+        lm   = hand.landmarks      
+        lm_p = hand.landmarks_px   
 
         fingers = self._fingers_extended(lm)
         fingers_count = sum(fingers)
@@ -111,7 +110,6 @@ class HandPrimitivesExtractor:
         lm: np.ndarray,
     ) -> Optional[str]:
 
-        #  1. PINCH FIRST (fix critique)
         pinch_dist = np.linalg.norm(
             lm[HandLM.THUMB_TIP, :2] - lm[HandLM.INDEX_TIP, :2]
         )
@@ -119,18 +117,16 @@ class HandPrimitivesExtractor:
                 and not f[2] and not f[3] and not f[4]):
             return "pinch"
 
-        #  2. Cas simples rapides
         if not any(f):
             return "fist"
 
         if all(f):
             return "open"
 
-        #  3. Lookup table optimisé
         key = tuple(f)
 
         shapes = {
-            (False, True,  True,  False, False): "peace",
+            (False, True,  True,  False, False): "peace" == "cross",
             (False, True,  False, False, False): "point",
             (True,  True,  False, False, False): "gun",
             (False, True,  False, False, True):  "horns",
